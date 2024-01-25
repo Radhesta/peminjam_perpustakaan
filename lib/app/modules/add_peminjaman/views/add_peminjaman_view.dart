@@ -109,22 +109,22 @@ class AddPeminjamanView extends GetView<AddPeminjamanController> {
                         ),
                       ),
 
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-                  child: Column(
-                    children: [
-                      Obx(() => controller.loading.value?
-                      CircularProgressIndicator():
-                      SizedBox(
-                        width: double.infinity,
-                        height: 50.0,
-                        child: ElevatedButton(
-                          onPressed: (){
-                            controller.addPeminjaman();
-                          },
-                          child: Text(
-                            'pinjam',
-                            style: TextStyle(
+                   Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                         child: Column(
+                        children: [
+                          Obx(() => controller.loading.value?
+                           CircularProgressIndicator():
+                            SizedBox(
+                            width: double.infinity,
+                             height: 50.0,
+                              child: ElevatedButton(
+                                onPressed: (){
+                                  controller.addPeminjaman();
+                                 },
+                                 child: Text(
+                                'pinjam',
+                                style: TextStyle(
                                 color: Colors.white,
                                 fontFamily: 'Montserrat',
                                 fontWeight: FontWeight.w700,

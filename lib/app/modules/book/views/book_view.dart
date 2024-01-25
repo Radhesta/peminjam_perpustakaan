@@ -14,10 +14,6 @@ class BookView extends GetView<BookController> {
           title: const Text('Buku View'),
           centerTitle: true,
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: ()=>Get.toNamed(Routes.BOOK),
-          child: Icon(Icons.add),
-        ),
         body: controller.obx((state) => ListView.separated(
           itemCount: state!.length,
           itemBuilder: (context, index){
