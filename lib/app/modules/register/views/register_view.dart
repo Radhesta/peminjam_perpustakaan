@@ -24,7 +24,7 @@ class RegisterView extends GetView<RegisterController> {
                   Container(
                     margin: const EdgeInsets.only(top: 20.0, bottom: 5.0),
                     child: const Text(
-                      'Sign Up',
+                      'Register',
                       style: TextStyle(
                           fontSize: 40.0,
                           color: Color(0xFF080ba1),
@@ -297,7 +297,7 @@ class RegisterView extends GetView<RegisterController> {
                               controller.Register();
                             },
                             child: Text(
-                              'Sign Up',
+                              'Register',
                               style: TextStyle(
                                   color: Colors.white,
                                   fontFamily: 'Montserrat',
@@ -307,7 +307,7 @@ class RegisterView extends GetView<RegisterController> {
                             ),
 
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Color(0xFF080ba1),
+                              backgroundColor: Color(0xff6464ff),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(50),
                               ),
@@ -343,7 +343,7 @@ class RegisterView extends GetView<RegisterController> {
                             Get.toNamed(Routes.LOGIN);
                           },
                           child: const Text(
-                            'Sign In',
+                            'Login',
                             style: TextStyle(
                               fontSize: 16.0,
                               fontFamily: 'Montserrat',
@@ -360,7 +360,7 @@ class RegisterView extends GetView<RegisterController> {
 
                 ]
             ),
-          )
+          ),
       ),
 
     );

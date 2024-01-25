@@ -11,7 +11,7 @@ class LoginView extends GetView<LoginController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('LoginView'),
+        title: const Text('Login View'),
         centerTitle: true,
       ),
       body:  Center(
@@ -19,42 +19,195 @@ class LoginView extends GetView<LoginController> {
           key: controller.formKey ,
           child: Column(
             children: [
-              TextFormField(
-                controller: controller.usernameController,
-                decoration: InputDecoration(hintText: "Massukan username"),
-                validator: (value){
-                  if(value!.length < 5){
-                    return "username tidak boleh kosong";
-                  }
-                  return null;
-                },
+              Container(
+                margin: const EdgeInsets.only(top: 20.0, bottom: 5.0),
+                child: const Text(
+                  'Login',
+                  style: TextStyle(
+                      fontSize: 40.0,
+                      color: Color(0xFF080ba1),
+                      fontFamily: 'Montserrat',
+                      fontWeight: FontWeight.w800,
+                      letterSpacing: -1.0
+                  ),
+                ),
               ),
 
-              TextFormField(
-                controller: controller.passwordController,
-                decoration: InputDecoration(hintText: "Massukan password"),
-                validator: (value){
-                  if(value!.length < 5){
-                    return "password tidak boleh kosong";
-                  }
-                  return null;
-                },
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                alignment:Alignment.center,
+                child: const Text(
+                  'Silakan masuk ke akun Anda untuk menikmati akses penuh ke koleksi digital kami.',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    height: 1.7,
+                    fontSize: 16.0,
+                    color: Color(0xFF61677D),
+                    letterSpacing: -0.3,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
-              Obx(() =>  controller.loading.value?
-              CircularProgressIndicator():
-              ElevatedButton(onPressed:(){
-                controller.Login();
-              }, child: Text("login"))
+
+              Container(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                      child: Text(
+                        'username',
+                        style: TextStyle(
+                          fontSize: 14.0,
+                          color: Color(0xFF61677D),
+                          letterSpacing: -0.2,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      child: TextFormField(
+                        controller: controller.usernameController,
+                        decoration: InputDecoration(
+                          hintText: 'Masukan username',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                        validator: (value){
+                          if (value!.isEmpty){
+                            return 'username tidak boleh kosong!';
+                          }
+                          return null;
+                        },
+                      ),
+                    ),
+
+                  ],
+                ),
               ),
-              Obx(() =>  controller.loading.value?
-              CircularProgressIndicator():
-              ElevatedButton(onPressed:() => Get.toNamed(Routes.REGISTER)
-              , child: Text("register"))
-              )
-            ],
-          ),
-        ),
-      ),
+
+              Container(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                      child: Text(
+                        'password',
+                        style: TextStyle(
+                          fontSize: 14.0,
+                          color: Color(0xFF61677D),
+                          letterSpacing: -0.2,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      child: TextFormField(
+                        controller: controller.passwordController,
+                        decoration: InputDecoration(
+                          hintText: 'Masukan password',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                        validator: (value){
+                          if (value!.isEmpty){
+                            return 'password tidak boleh kosong!';
+                          }
+                          return null;
+                        },
+                      ),
+                    ),
+
+                  ],
+                ),
+              ),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+              child: Column(
+                children: [
+                    Obx(() => controller.loading.value?
+                    CircularProgressIndicator():
+                    SizedBox(
+                      width: double.infinity,
+                      height: 50.0,
+                      child: ElevatedButton(
+                        onPressed: (){
+                          controller.Login();
+                        },
+                        child: Text(
+                          'Login',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: 'Montserrat',
+                              fontWeight: FontWeight.w700,
+                              fontSize: 18.0
+                          ),
+                        ),
+
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color(0xff6464ff),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50),
+                        ),
+                      ),
+                    ),
+                  )
+                  ),
+
+                  Container(
+                    margin: const EdgeInsets.only(top: 20, bottom: 15),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Belum memiliki akun ?',
+                          style: TextStyle(
+                            fontSize: 16.0,
+                            color: Color(0xFF61677D),
+                            letterSpacing: -0.3,
+                            fontFamily: 'Montserrat',
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+
+                        SizedBox(
+                          width: 5.5,
+                        ),
+
+                        GestureDetector(
+                          onTap: (){
+                            Get.toNamed(Routes.REGISTER);
+                          },
+                          child: const Text(
+                            'Register',
+                            style: TextStyle(
+                              fontSize: 16.0,
+                              fontFamily: 'Montserrat',
+                              fontWeight: FontWeight.w600,
+                              color: Color(0xFF080ba1),
+                            ),
+                          ),
+                        ),
+                   ],
+                  )
+                  ),
+
+             ]
+             ),
+             ),
+            ]
+          )
+        )
+      )
     );
   }
 }
