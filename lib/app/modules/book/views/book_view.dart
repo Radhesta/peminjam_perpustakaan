@@ -15,25 +15,26 @@ class BookView extends GetView<BookController> {
           centerTitle: true,
         ),
         body: controller.obx((state) => ListView.separated(
-          itemCount: state!.length,
-          itemBuilder: (context, index){
-            return ListTile(
-              title: Text("${state[index].judul}(${state[index].tahunTerbit}"),
-              subtitle: Text("Penulis ${state[index].penulis},${state[index].penerbit}"),
-              trailing: ElevatedButton(
-                child: Text("pinjam"),
-                onPressed: (){
-                  Get.toNamed(Routes.ADD_PEMINJAMAN, parameters: {
-                    'id': (state[index].id??0).toString(),
-                    'judul' : state[index].judul?? "-"
-                  });
-                }
-              ),
-            );
-          }, separatorBuilder: (context, int index) {
-            return Divider();
-        },
-
-        )));
+              itemCount: state!.length,
+              itemBuilder: (context, index) {
+                return ListTile(
+                  title:
+                      Text("${state[index].judul}(${state[index].tahunTerbit}"),
+                  subtitle: Text(
+                      "Penulis ${state[index].penulis},${state[index].penerbit}"),
+                  trailing: ElevatedButton(
+                      child: Text("pinjam"),
+                      onPressed: () {
+                        Get.toNamed(Routes.ADD_PEMINJAMAN, parameters: {
+                          'id': (state[index].id ?? 0).toString(),
+                          'judul': state[index].judul ?? "-"
+                        });
+                      }),
+                );
+              },
+              separatorBuilder: (context, int index) {
+                return Divider();
+              },
+            )));
   }
 }

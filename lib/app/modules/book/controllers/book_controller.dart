@@ -42,14 +42,14 @@ class BookController extends GetxController with StateMixin<List<DataBook>> {
     } on DioException catch (e) {
       if (e.response != null) {
         if (e.response?.data != null) {
-          change(null, status: RxStatus.error("${e.response?.data['message']}"));
+          change(null,
+              status: RxStatus.error("${e.response?.data['message']}"));
         }
       } else {
-        change(null, status: RxStatus.error(e.message ??""));
+        change(null, status: RxStatus.error(e.message ?? ""));
       }
     } catch (e) {
       change(null, status: RxStatus.error(e.toString()));
-
     }
   }
 }
